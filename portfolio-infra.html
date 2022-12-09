@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+  <meta property='og:type' content='website'>
+  <meta property='og:title' content='Jaewoo Kim ポートフォリオ'>
+  <meta property='og:url' content='URLが入る'>
+  <meta property='og:description' content='Jaewoo Kimのポートフォリオサイトです。'>
+  <meta property="og:image" content="img/ogp.png">
+  <meta name="description" content="Jaewoo Kimのポートフォリオサイトです" />
+  <title>Jaewoo Kim ポートフォリオ</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
+  <link href="./static/css/ress.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="./static/css/style.css" media="all" rel="stylesheet" type="text/css" />
+  <link rel="shortcut icon" href="img/favicon.ico" />
+  <link rel=”canonical” href=”URLが入る” />
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <!-- header -->
+    <header class="header ">
+      <div class="container">
+        <h1 class="header-logo">
+          <a href="/portfolio.html">Jaewoo Kim</a>
+        </h1>
+        <nav class="gnav">
+          <ul class="gnav-list">
+            <li class="gnav-item"><a href="/portfolio.html#about">ABOUT</a></li>
+            <li class="gnav-item"><a href="/portfolio.html#skill">SKILL</a></li>
+            <li class="gnav-item"><a href="/portfolio.html#project">PROJECT</a></li>
+            <li class="gnav-item"><a href="/portfolio.html#contact">CONTACT</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <!-- /header -->
+
+    <main class="content">
+
+      <article class="article">
+        <div class="article-container">
+          <h2 class="article-title">Private Web Application Server構築</h2>
+          <div class="article-body">
+            <p>
+              <img src="./static/img/jeus-private-infra.png" alt="">
+            </p>
+            <p>
+              Privateなインフラ環境を構築しました。<br>
+              Kubernetesを用いたContainer Orchestration Systemを構築し、<br>
+              JenkinsによるCI/CDを実施、Prometheusでサーバー情報収集し、<br>
+              Grafanaで視覚化したページでサーバーモニタリングを実現することができました。<br><br>
+
+              Kubernetesのアーキテクチャーや機能などを理解することができたし、
+              CI/CDやモニタリングを構築し運用してみることで、インフラ全般の理解が深まる機会になりました。<br>
+            </p>
+            <h3>開発期間</h3>
+            <li class="li-project-details">2021/9 - 2021/11</li>
+            <h3>URL</h3>
+            <p><a href="https://github.com/sambunarayan/Servers/tree/main/jeus-k8sInfra" target="_blank"
+                rel="noopener">https://github.com/sambunarayan/Servers/tree/main/jeus-k8sInfra</a></p>
+            <h3>目的</h3>
+            <p>
+              一からインフラ環境を構築してみることで、<br>
+              インフラ、ネットワークの知識や理解を深めることが目的です。<br>
+            </p>
+            <h3>ターゲット</h3>
+            <li class="li-project-details">Kubernetesを導入し、Container Orchestration Systemの知識や理解を深める。</li>
+            <li class="li-project-details">CI/CD、モニタリングなどサーバー運用に必要なプログラムを導入しサーバー運用を経験する。</li>
+            <li class="li-project-details">今後Staging環境として活用する。</li>
+            <li class="li-project-details">Elasticsearchを導入し、データ分析やサーバー分析を行いサービス改善を実現する。</li>
+            <h3>サーバーSPEC</h3>
+            <li class="li-project-details">仮想環境：Virtual Box, Vagrant</li>
+            <li class="li-project-details">Server：CentOS8 4台（Master node:1, Worker node:3）</li>
+            <li class="li-project-details">Middleware：Kubernetes</li>
+            <li class="li-project-details">DB：MariaDB</li>
+            <li class="li-project-details">CI/CD：Jenkins</li>
+            <li class="li-project-details">Monitoring：Prometheus, Grafana</li>
+            <li class="li-project-details">Communication Tool：Slack</li>
+            <h3>サーバー構成図</h3>
+            <p>
+              <img src="./static/img/jeus-k8s.png" alt="">
+            </p>
+            <li class="li-project-details">サーバー構築：Vagrantを用いてVirtual boxに仮想サーバー４台を建てました。</li>
+            <li class="li-project-details">CI/CD：Helmを利用してMasterNodeにJenkins podをインストールしました。</li>
+            <li class="li-project-details">Monitoring：Prometheusでサーバー情報を収集しGrafanaで視覚化しました。</li>
+            <h3>CI/CD</h3>
+            Jenkinsを利用してビルドとデプロイを行います。<br>
+            JenkinsのKubernetes continuouse deploy pluginでGit hubを定期的に確認し、<br>
+            Git hubの新たなプッシュを検知したら自動的にビルドを開始しdocker imageを作成します。<br><br>
+
+            作成されたdocker imageはdocker registryに登録されます。
+            その後、kubernetesのdeploymentが開始され、docker registryからdocker imageを取得してPodを作成します。<br>
+            尚、ビルド開始とデプロイ終了時にSlackに通知します。<br><br>
+
+            ※Kubernetes deploymentは無停止デプロイを実現するためにblue-green戦略を採用しています。<br>
+
+            <p>
+              <img src="./static/img/CI_CD.png" alt="">
+            </p>
+            <b>①Push:</b>エンジニアがGit hubにプッシュします。<br>
+            <b>②Build & Docker image register:</b>Git hubから資産をプルし、ビルドを開始します。<br>
+            &nbsp;&nbsp;&nbsp;ビルドされたjarをもとにDocker imageを作成しprivate docker registryに登録します。<br>
+            <b>③Deployment:</b>モジュールのデプロイメントを定義したyamlをもとにデプロイを開始し、Kubernetes podを作成する。<br>
+            <b>④Notification(web hook):</b>デプロイが完了したらJenkinsからSlackに完了の通知をします。<br>
+            &nbsp;&nbsp;&nbsp;このときはSlackのWeb hookを利用します。<br><br>
+
+            <b>Jenkinsビルドが開始したときとビルドが完了したときにSlackに通知します。</b>
+            <p>
+              <img src="./static/img/jenkins-notice.png" alt="">
+            </p>
+
+            <h3>Monitoring</h3>
+            Prometheusでサーバーの情報を収集し、Grafanaで視覚化しました。
+            トラフィックやサーバー負荷の推移を分析し、サーバーを改善していくことで、
+            サービス運用を経験することが目標です。
+            
+          </div>
+          <div class="home-link">
+            <a href="../portfolio.html#project-infra">Project infra slideへ</a>
+          </div>
+        </div>
+      </article>
+
+      <div class="page-top" id="js-page-top">
+        <span class="material-icons-outlined">expand_less</span>
+      </div>
+    </main>
+
+    <!-- footer -->
+    <footer class="footer">
+      <div class="copyright">&copy;Jaewoo Kim</div>
+    </footer>
+    <!-- /footer -->
+
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type='text/javascript' src="./static/js/script.js"></script>
+</body>
+
+</html>
