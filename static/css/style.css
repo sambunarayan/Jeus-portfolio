@@ -67,6 +67,12 @@ font-size: 25px;
   padding: 0 40px;
 }
 
+.image-div {
+  width: 600px;
+  border: 2px solid #cfcfcfd9;
+  align-items: center;
+}
+
 /*--------------------------------
  見出し
 ---------------------------------*/
