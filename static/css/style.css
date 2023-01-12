@@ -70,7 +70,7 @@ font-size: 25px;
 .image-div {
   width: 600px;
   border: 2px solid #cfcfcfd9;
-  align-items: center;
+  margin: 0 auto;
 }
 
 /*--------------------------------
