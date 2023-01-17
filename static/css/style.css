@@ -386,6 +386,45 @@ font-size: 25px;
 }
 
 /*--------------------------------
+ Career
+---------------------------------*/
+.career-div {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.career-img-div {
+  width: 30%;
+  margin-right: 30px;
+  border-radius: 10%;
+  margin-bottom: 30px;
+}
+
+.career-img-div img {
+  border-radius: 10%;
+}
+
+.career-body {
+  width: 60%;
+  margin: 10px;
+  flex-wrap: wrap;
+  display: flex;
+}
+
+.career-item-div {
+  margin: 20px;
+  height: 20%;
+}
+
+.career-body p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #4c4c4c;
+}
+
+/*--------------------------------
  Contact
 ---------------------------------*/
 .contact {
