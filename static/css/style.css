@@ -87,7 +87,6 @@ font-size: 25px;
   list-style: square;
 }
 
-
 /*--------------------------------
  見出し
 ---------------------------------*/
@@ -413,14 +412,41 @@ font-size: 25px;
   display: flex;
 }
 
+.career-body p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #4c4c4c;
+}
+
 .career-item-div {
   margin: 20px;
   height: 20%;
 }
 
-.career-body p {
-  font-size: 15px;
-  line-height: 1.8;
+.career-body h3 {
+  position: relative;
+  font-size: 18px;
+  margin-bottom: 5px;
+  padding-left: 1em;
+  text-align: left;
+}
+
+.career-body h3:not(:first-child) {
+  margin-top: 50px;
+}
+
+.career-body h3::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  content: "";
+  border-radius: 3px;
+  background-color: rgb(72, 72, 72);
+}
+
+.career-body h4 {
   color: #4c4c4c;
 }
 
